@@ -2586,7 +2586,8 @@ body.is-mobile.landing #footer {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.227);
+	background-color: rgba(0, 0, 0, 0.249);
+	backdrop-filter: blur(2px);
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -2597,17 +2598,18 @@ body.is-mobile.landing #footer {
 
 .project-links a {
 	/* margin: 5px; */
-	color: #000000;
+	color: #39454b;
 	font-size: 14px;
 	cursor: pointer;
-	background-color: #ffffffed;
+	background-color: #ffffffef;
 	border-radius: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 10px;
+	padding: 15px;
 	font-size: 15px;
 	font-weight: 700;
+	text-decoration: none;
 }
 
 .git {
