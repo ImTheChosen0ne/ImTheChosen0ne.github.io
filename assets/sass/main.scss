@@ -1,0 +1,355 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/vendor';
+@import 'libs/breakpoints';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900');
+@import url('fontawesome-all.min.css');
+
+/*
+	Big Picture by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+// Breakpoints.
+
+	@include breakpoints((
+		xxlarge: ( 1681px,  1920px ),
+		xlarge:  ( 1281px,  1680px ),
+		large:   ( 1001px,  1280px ),
+		medium:  ( 737px,   1000px ),
+		small:   ( 481px,   736px  ),
+		xsmall:  ( null,    480px  )
+	));
+
+// Base.
+
+	@import 'base/reset';
+	@import 'base/page';
+	@import 'base/typography';
+
+// Component.
+
+	@import 'components/box';
+	@import 'components/button';
+	@import 'components/form';
+	@import 'components/icon';
+	@import 'components/image';
+	@import 'components/list';
+	@import 'components/actions';
+	@import 'components/icons';
+	@import 'components/section';
+	@import 'components/table';
+	@import 'components/poptrox-popup';
+	@import 'components/gallery';
+
+// Layout.
+
+	@import 'layout/header';
+	@import 'layout/main';
+	@import 'layout/footer';
+
+/* Intro */
+
+	#intro {
+		background: url('images/overlay.png'), url('../../images/intro.jpg');
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, bottom center;
+		background-repeat: repeat, no-repeat;
+	}
+
+/* One */
+
+	#one {
+		background: url('images/overlay.png'), url('../../images/one.jpg');
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+/* Two */
+
+	#two {
+		background: url('images/overlay.png'), url('../../images/two.jpg');
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+/* Contact */
+
+	#contact {
+		overflow: hidden;
+		padding-bottom: 0;
+
+		.box {
+			@include vendor('transition', 'transform #{_duration(fade-in)} ease');
+			@include vendor('transform', 'translateY(0)');
+			position: relative;
+		}
+
+		&.inactive {
+			.box {
+				@include vendor('transform', 'translateY(100%)');
+			}
+		}
+
+		@include breakpoint('<=small') {
+			.box {
+				padding: 1.5em 1.5em 2em 1.5em;
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			.box {
+				padding: 1em 1em 2em 1em;
+			}
+		}
+	}
+
+	/* Banner */
+
+	#banner {
+		@include vendor('display', 'flex');
+		@include vendor('flex-direction', 'column');
+		@include vendor('justify-content', 'center');
+		cursor: default;
+		height: 100vh;
+		min-height: 35em;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+
+		h2 {
+			@include vendor('transform', 'scale(1)');
+			@include vendor('transition', ('transform 0.5s ease', 'opacity 0.5s ease'));
+			display: inline-block;
+			font-size: 1.75em;
+			opacity: 1;
+			padding: 0.35em 1em;
+			position: relative;
+			z-index: 1;
+
+			&:before, &:after {
+				@include vendor('transition', 'width 0.85s ease');
+				@include vendor('transition-delay', '0.25s');
+				background: _palette(fg-bold);
+				content: '';
+				display: block;
+				height: 2px;
+				position: absolute;
+				width: 100%;
+			}
+
+			&:before {
+				top: 0;
+				left: 0;
+			}
+
+			&:after {
+				bottom: 0;
+				right: 0;
+			}
+		}
+
+		p {
+			letter-spacing: _size(letter-spacing-alt);
+			text-transform: uppercase;
+
+			a {
+				color: inherit;
+			}
+		}
+
+		.more {
+			@include vendor('transition', ('transform 0.75s ease', 'opacity 0.75s ease'));
+			@include vendor('transition-delay', '3.5s');
+			@include vendor('transform', 'translateY(0)');
+			border: none;
+			bottom: 0;
+			color: inherit;
+			font-size: 0.8em;
+			height: 8.5em;
+			left: 50%;
+			letter-spacing: _size(letter-spacing-alt);
+			margin-left: -8.5em;
+			opacity: 1;
+			outline: 0;
+			padding-left: _size(letter-spacing-alt);
+			position: absolute;
+			text-align: center;
+			text-transform: uppercase;
+			width: 16em;
+			z-index: 1;
+
+			&:after {
+				background-image: url('images/arrow.svg');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				bottom: 4em;
+				content: '';
+				display: block;
+				height: 1.5em;
+				left: 50%;
+				margin: 0 0 0 -0.75em;
+				position: absolute;
+				width: 1.5em;
+			}
+		}
+
+		&:after {
+			@include vendor('pointer-events', 'none');
+			@include vendor('transition', 'opacity #{_duration(fadein)} ease-in-out');
+			@include vendor('transition-delay', '1.25s');
+			content: '';
+			background: _palette(bg);
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+		}
+
+		@include breakpoint('<=small') {
+			@include padding(7em, 3em);
+			height: auto;
+			min-height: 0;
+
+			h2 {
+				font-size: 1.25em;
+			}
+
+			br {
+				display: none;
+			}
+
+			.more {
+				display: none;
+			}
+		}
+	}
+
+	body.is-preload {
+		#banner {
+			h2 {
+				@include vendor('transform', 'scale(0.95)');
+				opacity: 0;
+
+				&:before, &:after {
+					width: 0;
+				}
+			}
+
+			.more {
+				@include vendor('transform', 'translateY(8.5em)');
+				opacity: 0;
+			}
+
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+
+/* Main */
+
+#main {
+	> header {
+		@include padding(12em, 0);
+		@include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../../images/banner.jpg")'));
+		background-attachment: fixed;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+
+		h2 {
+			font-size: 1.75em;
+			margin: 0 0 (_size(element-margin) * 0.25) 0;
+		}
+
+		p {
+			color: inherit;
+			letter-spacing: _size(letter-spacing-alt);
+			text-transform: uppercase;
+			top: 0;
+
+			a {
+				color: inherit;
+			}
+		}
+
+		@include breakpoint('<=xlarge') {
+			@include padding(10em, 0);
+		}
+
+		@include breakpoint('<=large') {
+			@include padding(8em, 3em);
+		}
+
+		@include breakpoint('<=medium') {
+			@include padding(10em, 3em);
+		}
+
+		@include breakpoint('<=small') {
+			@include padding(5em, 3em);
+
+			h2 {
+				font-size: 1.25em;
+				margin: 0 0 (_size(element-margin) * 0.5) 0;
+			}
+		}
+	}
+}
+
+body.is-mobile {
+	#main {
+		> header {
+			background-attachment: scroll;
+		}
+	}
+}
+
+/* Landing */
+
+body.landing {
+	#page-wrapper {
+		@include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../../images/banner.jpg")'));
+		background-attachment: fixed;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-top: 0;
+	}
+
+	#footer {
+		background-color: darken(transparentize(_palette(bg), 0.1), 8);
+	}
+}
+
+body.is-mobile {
+	&.landing {
+		#page-wrapper {
+			background: none;
+		}
+
+		#banner,
+		.wrapper.style4 {
+			@include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../../images/banner.jpg")'));
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		#footer {
+			background-color: darken(_palette(bg), 8);
+		}
+	}
+}
+
+
