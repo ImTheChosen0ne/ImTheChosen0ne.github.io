@@ -2007,8 +2007,10 @@ input, select, textarea {
 				-ms-transform: translateZ(0);
 				transform: translateZ(0);
 				position: relative;
-				width: 35%;
+				width: 80%;
 				margin: 0;
+				font-size: 15px;
+				max-width: fit-content;
 			}
 
 			.main.style2.left {
@@ -2089,6 +2091,7 @@ input, select, textarea {
 			.main.style2 .content {
 				width: 80%;
 				font-size: 15px;
+				max-width: fit-content;
 			}
 
 		}
