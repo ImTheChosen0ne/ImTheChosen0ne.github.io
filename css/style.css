@@ -626,3 +626,9 @@ p {
         transform: translate(10%, 60px);
     }
 }
+
+@media (max-width: 500px) {
+    div.test.img-fluid {
+        transform: translate(0, 60px);
+    }
+}
