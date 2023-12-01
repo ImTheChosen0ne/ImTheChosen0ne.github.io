@@ -598,6 +598,10 @@ p {
     li.mx-2 {
         margin-right: 0 !important;
     }
+
+    p.mb-3 {
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 430px) {
