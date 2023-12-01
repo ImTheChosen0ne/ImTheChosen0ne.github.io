@@ -577,6 +577,10 @@ p {
         transform: translate(5%, -15.5%);
         width: 444px;
     }
+    
+    img.img-fluid-about {
+        width: 100%;
+    }
 }
 
 
